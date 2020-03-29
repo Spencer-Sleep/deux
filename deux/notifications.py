@@ -23,10 +23,9 @@ def send_mfa_code_text_message(mfa_instance, mfa_code):
     :raises deux.exceptions.TwilioMessageError: To tell system that Twilio
         failed to send message.
     """
-
-    sid = mfa_settings.TWILIO_ACCOUNT_SID
-    token = mfa_settings.TWILIO_AUTH_TOKEN
-    twilio_num = mfa_settings.TWILIO_SMS_POOL_SID
+    sid = mfa_settings.user_settings['TWILIO_ACCOUNT_SID']
+    token = mfa_settings.user_settings['TWILIO_AUTH_TOKEN']
+    twilio_num = mfa_settings.user_settings['TWILIO_PHONE_NUMBER']
     if not sid or not token or not twilio_num:
         print("Please provide Twilio credentials to send text messages. For "
               "testing purposes, the MFA code is {code}".format(code=mfa_code))
